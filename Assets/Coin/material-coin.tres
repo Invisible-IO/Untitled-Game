@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t2op31b48kyb"]
+
+[resource]
+resource_name = "material-coin"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.594484, 0, 1)
+metallic = 0.6
+roughness = 0.2
+emission_energy_multiplier = 0.0

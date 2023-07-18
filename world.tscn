@@ -1,14 +1,33 @@
-[gd_scene load_steps=18 format=3 uid="uid://cn6unin2jq46q"]
+[gd_scene load_steps=20 format=3 uid="uid://b5tcrlxrr75pg"]
 
 [ext_resource type="PackedScene" uid="uid://dy6yx3lrf53nv" path="res://player.tscn" id="1_5asyc"]
+[ext_resource type="Shader" path="res://Shaders/cel.gdshader" id="1_eipew"]
 [ext_resource type="PackedScene" uid="uid://bjdbexxapxebx" path="res://coin.tscn" id="2_3k0lc"]
-[ext_resource type="Texture2D" uid="uid://dkac8m1koxmou" path="res://Assets/Coin/coins_hud.png" id="3_ussm5"]
-[ext_resource type="Script" path="res://coin.gd" id="3_uti5f"]
 [ext_resource type="FontFile" uid="uid://c88l1optbt6co" path="res://Assets/Fonts/Monoton-Regular.ttf" id="4_lx33i"]
 [ext_resource type="Script" path="res://Label.gd" id="6_ld5xc"]
 [ext_resource type="Script" path="res://Node3D.gd" id="7_sel1q"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1op6"]
+render_priority = 0
+shader = ExtResource("1_eipew")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
 [sub_resource type="BoxMesh" id="BoxMesh_fwr3u"]
+material = SubResource("ShaderMaterial_t1op6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0rld"]
 
@@ -21,18 +40,74 @@ sky_material = SubResource("PhysicalSkyMaterial_vuqix")
 background_mode = 2
 sky = SubResource("Sky_7hdg0")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvku3"]
+render_priority = 0
+shader = ExtResource("1_eipew")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = true
+shader_parameter/border_width = 0.01
+
 [sub_resource type="BoxMesh" id="BoxMesh_ehccf"]
+material = SubResource("ShaderMaterial_tvku3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pp0ak"]
 
-[sub_resource type="Gradient" id="Gradient_pc1fm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2new"]
+render_priority = 0
+shader = ExtResource("1_eipew")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1ptt"]
-gradient = SubResource("Gradient_pc1fm")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_beabp"]
+render_priority = 0
+shader = ExtResource("1_eipew")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsltw"]
-albedo_color = Color(0.305882, 1, 0.682353, 1)
-albedo_texture = SubResource("GradientTexture2D_y1ptt")
+[sub_resource type="SphereMesh" id="SphereMesh_taxoj"]
+material = SubResource("ShaderMaterial_beabp")
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3qrs4"]
 
 [node name="World" type="Node3D"]
 
@@ -69,7 +144,12 @@ shape = SubResource("BoxShape3D_pp0ak")
 
 [node name="coin" parent="Coins" instance=ExtResource("2_3k0lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56267, -3.8244)
-script = ExtResource("3_uti5f")
+
+[node name="coin2" parent="Coins" instance=ExtResource("2_3k0lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58884, 3.38473, 19.7585)
+
+[node name="coin3" parent="Coins" instance=ExtResource("2_3k0lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09445, 13.7433)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -77,21 +157,28 @@ anchors_preset = 0
 offset_right = 1155.0
 offset_bottom = 651.0
 
-[node name="CoinsHud" type="Sprite2D" parent="Control"]
-position = Vector2(124, 41)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_ussm5")
+[node name="Coin_Counter" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 8.0
+offset_right = 298.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 0.870588, 0.34902, 1)
+theme_override_fonts/font = ExtResource("4_lx33i")
+theme_override_font_sizes/font_size = 50
+text = "Q"
+script = ExtResource("6_ld5xc")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 249.0
+offset_left = 14.0
 offset_top = 5.0
-offset_right = 335.0
-offset_bottom = 87.0
-theme_override_colors/font_color = Color(0.992157, 0.768627, 0.34902, 1)
+offset_right = 206.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(1, 0.870588, 0.34902, 1)
 theme_override_fonts/font = ExtResource("4_lx33i")
 theme_override_font_sizes/font_size = 50
-script = ExtResource("6_ld5xc")
+text = "Coins :"
 
 [node name="Shopkeeper" type="Node3D" parent="."]
 script = ExtResource("7_sel1q")
@@ -113,10 +200,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19389, -1.37898, 19.992)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FloatyBlockGreen"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.67489, 2.09032, 0)
 mesh = SubResource("BoxMesh_ehccf")
-surface_material_override/0 = SubResource("StandardMaterial3D_lsltw")
+surface_material_override/0 = SubResource("ShaderMaterial_w2new")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloatyBlockGreen"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.675, 2.09, 0)
 shape = SubResource("BoxShape3D_pp0ak")
 
+[node name="Sphere" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11038, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sphere"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62172, -1.91703, 14.2461)
+mesh = SubResource("SphereMesh_taxoj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere/MeshInstance3D"]
+shape = SubResource("SphereShape3D_3qrs4")
+
 [connection signal="body_entered" from="Coins/coin" to="Coins/coin" method="_on_body_entered"]
+[connection signal="coinCollected" from="Coins/coin" to="Control/Coin_Counter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/coin2" to="Coins/coin2" method="_on_body_entered"]
+[connection signal="coinCollected" from="Coins/coin2" to="Control/Coin_Counter" method="_on_coin_collected"]
+[connection signal="body_entered" from="Coins/coin3" to="Coins/coin3" method="_on_body_entered"]
+[connection signal="coinCollected" from="Coins/coin3" to="Control/Coin_Counter" method="_on_coin_collected"]
